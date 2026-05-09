@@ -1,2 +1,9 @@
 # config-merge
-Deep merge multiple config files with env variable override
+
+Deep merge multiple config files with environment variable override.
+
+## Usage
+
+
+## License
+MIT
