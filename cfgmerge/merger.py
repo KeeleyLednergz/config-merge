@@ -14,12 +14,10 @@ def load_config(filepath):
         return json.load(f)
 
 def merge_configs(*filepaths, env_prefix="CFG_"):
-    """Merge multiple JSON config files, later files override earlier ones."""
     result = {}
     for fp in filepaths:
         if os.path.isfile(fp):
             result = deep_merge(result, load_config(fp))
-    # Apply env overrides: CFG_DB__HOST -> {"db": {"host": value}}
     for key, val in os.environ.items():
         if key.startswith(env_prefix):
             parts = key[len(env_prefix):].lower().split("__")
